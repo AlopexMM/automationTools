@@ -19,3 +19,17 @@ newlines = [word + '\n' if word.endswith('.') else word for word in ascii_text]
 LINE_SIZE = 80
 
 lines = []
+
+line = ''
+
+for word in newlines:
+    if line.endswith('\n') or len(line) + len(word) + 1 > LINE_SIZE:
+        lines.append(line)
+        line = ''
+    line = line + ' ' + word
+
+lines = [line.title() for line in lines]
+
+result = '\n'.join(lines)
+
+print(result)
